@@ -1,0 +1,368 @@
+# AtlasAir - NestJS Flight Reservation Backend - Task Roadmap
+
+## 📋 Project Status: In Progress
+
+---
+
+## 🚀 Phase 1: Project Setup & Configuration
+
+### ✅ Completed Tasks
+- [x] Project structure planning
+- [x] Documentation created (setup guide)
+- [x] Create NestJS project structure (package.json, tsconfig.json, nest-cli.json)
+- [x] Create `.env.example` file
+- [x] Configure `main.ts` with CORS, validation pipes, and global prefix
+- [x] Configure `app.module.ts` with all modules and database connection
+- [x] Create `.gitignore` file
+- [x] Create `.prettierrc` and `.eslintrc.js` configuration files
+
+### ⏳ Pending Tasks
+- [ ] Install NestJS CLI globally (optional, for CLI commands)
+- [ ] Install core dependencies (@nestjs/config, @nestjs/jwt, @nestjs/passport, etc.)
+- [ ] Install TypeORM and Oracle dependencies (@nestjs/typeorm, typeorm, oracledb)
+- [ ] Install validation dependencies (class-validator, class-transformer, bcrypt)
+- [ ] Install email service dependencies (@nestjs-modules/mailer, nodemailer, handlebars)
+- [ ] Install PDF generation dependencies (pdfkit)
+- [ ] Install dev dependencies (@types/* packages)
+- [ ] Create `.env` file with actual configuration (user needs to fill in)
+
+---
+
+## 📁 Phase 2: Project Structure & Core Files
+
+### ✅ Completed Tasks
+- [x] Create `src/config/` directory
+  - [x] Create `database.config.ts`
+  - [x] Create `jwt.config.ts`
+- [x] Create `src/common/enums/` directory
+  - [x] Create `user-role.enum.ts`
+  - [x] Create `flight-class.enum.ts`
+  - [x] Create `reservation-status.enum.ts`
+  - [x] Create `payment-status.enum.ts`
+- [x] Create `src/common/interceptors/` directory
+  - [x] Create `transform.interceptor.ts`
+- [x] Create `src/common/filters/` directory
+  - [x] Create `http-exception.filter.ts`
+
+### ⏳ Pending Tasks
+- [ ] (All tasks completed)
+
+---
+
+## 🔐 Phase 3: Authentication Module
+
+### ✅ Completed Tasks
+- [x] Create `src/auth/` directory structure
+- [x] Create `src/auth/decorators/` directory
+  - [x] Create `public.decorator.ts`
+  - [x] Create `roles.decorator.ts`
+- [x] Create `src/auth/guards/` directory
+  - [x] Create `jwt-auth.guard.ts`
+  - [x] Create `roles.guard.ts`
+- [x] Create `src/auth/strategies/` directory
+  - [x] Create `jwt.strategy.ts`
+- [x] Create `src/auth/dto/` directory
+  - [x] Create `login.dto.ts`
+  - [x] Create `register.dto.ts`
+- [x] Create `src/auth/auth.controller.ts`
+- [x] Create `src/auth/auth.service.ts`
+- [x] Create `src/auth/auth.module.ts`
+- [x] Implement JWT authentication logic
+- [x] Implement password hashing with bcrypt
+- [x] Implement role-based access control
+
+### ⏳ Pending Tasks
+- [ ] (All tasks completed)
+
+---
+
+## 👥 Phase 4: Users Module
+
+### ✅ Completed Tasks
+- [x] Create `src/users/` directory structure
+- [x] Create `src/users/entities/user.entity.ts`
+- [x] Create `src/users/dto/` directory
+  - [x] Create `create-user.dto.ts`
+  - [x] Create `update-user.dto.ts`
+- [x] Create `src/users/users.controller.ts`
+- [x] Create `src/users/users.service.ts`
+- [x] Create `src/users/users.module.ts`
+- [x] Implement user CRUD operations
+- [x] Implement user profile management
+
+### ⏳ Pending Tasks
+- [ ] (All tasks completed)
+
+---
+
+## ✈️ Phase 5: Flights Module
+
+### ✅ Completed Tasks
+- [x] Create `src/flights/` directory structure
+- [x] Create `src/flights/entities/flight.entity.ts`
+- [x] Create `src/flights/dto/` directory
+  - [x] Create `create-flight.dto.ts`
+  - [x] Create `update-flight.dto.ts`
+  - [x] Create `search-flight.dto.ts`
+- [x] Create `src/flights/flights.controller.ts`
+- [x] Create `src/flights/flights.service.ts`
+- [x] Create `src/flights/flights.module.ts`
+- [x] Implement flight CRUD operations
+- [x] Implement flight search functionality
+- [x] Implement flight availability checking
+
+### ⏳ Pending Tasks
+- [ ] (All tasks completed)
+
+---
+
+## 🛫 Phase 6: Airlines Module
+
+### ✅ Completed Tasks
+- [x] Create `src/airlines/` directory structure
+- [x] Create `src/airlines/entities/airline.entity.ts`
+- [x] Create `src/airlines/dto/` directory
+  - [x] Create `create-airline.dto.ts`
+  - [x] Create `update-airline.dto.ts`
+- [x] Create `src/airlines/airlines.controller.ts`
+- [x] Create `src/airlines/airlines.service.ts`
+- [x] Create `src/airlines/airlines.module.ts`
+- [x] Implement airline CRUD operations
+
+### ⏳ Pending Tasks
+- [ ] (All tasks completed)
+
+---
+
+## 🏢 Phase 7: Airports Module
+
+### ✅ Completed Tasks
+- [x] Create `src/airports/` directory structure
+- [x] Create `src/airports/entities/airport.entity.ts`
+- [x] Create `src/airports/dto/` directory
+  - [x] Create `create-airport.dto.ts`
+  - [x] Create `update-airport.dto.ts`
+- [x] Create `src/airports/airports.controller.ts`
+- [x] Create `src/airports/airports.service.ts`
+- [x] Create `src/airports/airports.module.ts`
+- [x] Implement airport CRUD operations
+
+### ⏳ Pending Tasks
+- [ ] (All tasks completed)
+
+---
+
+## 📝 Phase 8: Reservations Module
+
+### ✅ Completed Tasks
+- [x] Create `src/reservations/` directory structure
+- [x] Create `src/reservations/entities/reservation.entity.ts`
+- [x] Create `src/reservations/dto/` directory
+  - [x] Create `create-reservation.dto.ts`
+  - [x] Create `update-reservation.dto.ts`
+- [x] Create `src/reservations/reservations.controller.ts`
+- [x] Create `src/reservations/reservations.service.ts`
+- [x] Create `src/reservations/reservations.module.ts`
+- [x] Implement reservation CRUD operations
+- [x] Implement reservation status management
+- [x] Implement seat selection logic
+- [x] Implement reservation cancellation
+
+### ⏳ Pending Tasks
+- [ ] (All tasks completed)
+
+---
+
+## 💳 Phase 9: Payments Module
+
+### ✅ Completed Tasks
+- [x] Create `src/payments/` directory structure
+- [x] Create `src/payments/entities/payment.entity.ts`
+- [x] Create `src/payments/dto/` directory
+  - [x] Create `create-payment.dto.ts`
+- [x] Create `src/payments/payments.controller.ts`
+- [x] Create `src/payments/payments.service.ts`
+- [x] Create `src/payments/payments.module.ts`
+- [x] Implement payment processing
+- [x] Implement payment status tracking
+
+### ⏳ Pending Tasks
+- [ ] Integrate payment gateway (production implementation)
+
+---
+
+## 📊 Phase 10: Dashboard Module
+
+### ✅ Completed Tasks
+- [x] Create `src/dashboard/` directory structure
+- [x] Create `src/dashboard/dto/` directory
+  - [x] Create `statistics.dto.ts`
+- [x] Create `src/dashboard/dashboard.controller.ts`
+- [x] Create `src/dashboard/dashboard.service.ts`
+- [x] Create `src/dashboard/dashboard.module.ts`
+- [x] Implement statistics aggregation
+- [x] Implement revenue reports
+- [x] Implement booking analytics
+- [x] Implement user activity metrics
+
+### ⏳ Pending Tasks
+- [ ] (All tasks completed)
+
+---
+
+## 🔔 Phase 11: Notifications Module
+
+### ✅ Completed Tasks
+- [x] Create `src/notifications/` directory structure
+- [x] Create `src/notifications/notifications.service.ts`
+- [x] Create `src/notifications/notifications.module.ts`
+- [x] Configure email service (MailerModule)
+- [x] Implement booking confirmation emails
+- [x] Implement payment confirmation emails
+- [x] Implement flight reminder notifications
+- [x] Implement cancellation notifications
+
+### ⏳ Pending Tasks
+- [ ] Create email templates with Handlebars (in `src/notifications/templates/`)
+  - [ ] Create `booking-confirmation.hbs`
+  - [ ] Create `payment-confirmation.hbs`
+  - [ ] Create `flight-reminder.hbs`
+  - [ ] Create `cancellation.hbs`
+
+---
+
+## 📄 Phase 12: PDF Service Module
+
+### ✅ Completed Tasks
+- [x] Create `src/pdf/` directory structure
+- [x] Create `src/pdf/pdf.service.ts`
+- [x] Create `src/pdf/pdf.module.ts`
+- [x] Implement PDF generation for tickets
+- [x] Implement PDF generation for invoices
+
+### ⏳ Pending Tasks
+- [ ] (All core tasks completed)
+
+---
+
+## 🗄️ Phase 13: Database Setup
+
+### ✅ Completed Tasks
+- [x] Configure TypeORM with Oracle connection (in app.module.ts)
+
+### ⏳ Pending Tasks
+- [ ] Install and configure Oracle Instant Client
+- [ ] Create Oracle database schema
+- [ ] Create database migrations (if using migrations)
+- [ ] Seed initial data (airports, airlines, etc.)
+- [ ] Test database connection
+- [ ] Configure database connection pooling (if needed)
+
+---
+
+## 🧪 Phase 14: Testing & Validation
+
+### ⏳ Pending Tasks
+- [ ] Set up testing environment
+- [ ] Write unit tests for services
+- [ ] Write integration tests for controllers
+- [ ] Write e2e tests for critical flows
+- [ ] Test authentication flow
+- [ ] Test booking flow
+- [ ] Test payment flow
+- [ ] Validate all DTOs with class-validator
+- [ ] Test error handling
+
+---
+
+## 🚀 Phase 15: Deployment Preparation
+
+### ⏳ Pending Tasks
+- [ ] Configure production environment variables
+- [ ] Set up logging system
+- [ ] Configure CORS for production
+- [ ] Set up error monitoring
+- [ ] Create production build scripts
+- [ ] Write deployment documentation
+- [ ] Configure security headers
+- [ ] Set up rate limiting
+- [ ] Configure request validation
+
+---
+
+## 📚 Phase 16: Documentation
+
+### ⏳ Pending Tasks
+- [ ] Create API documentation (Swagger/OpenAPI)
+- [ ] Document all endpoints
+- [ ] Document authentication flow
+- [ ] Create database schema documentation
+- [ ] Create deployment guide
+- [ ] Create development guide
+- [ ] Document environment variables
+
+---
+
+## 🔧 Phase 17: Additional Features (Optional)
+
+### ⏳ Pending Tasks
+- [ ] Implement file upload functionality
+- [ ] Implement scheduled tasks (cleanup, reminders)
+- [ ] Implement caching (Redis)
+- [ ] Implement search functionality enhancement
+- [ ] Implement filtering and pagination
+- [ ] Implement user preferences
+- [ ] Implement loyalty program features
+- [ ] Implement review and rating system
+
+---
+
+## 📝 Notes
+
+### Priority Order:
+1. Phase 1: Project Setup & Configuration (CRITICAL)
+2. Phase 2: Project Structure & Core Files (CRITICAL)
+3. Phase 3: Authentication Module (CRITICAL)
+4. Phase 4: Users Module (HIGH)
+5. Phase 13: Database Setup (HIGH)
+6. Phase 5: Flights Module (HIGH)
+7. Phase 6: Airlines Module (MEDIUM)
+8. Phase 7: Airports Module (MEDIUM)
+9. Phase 8: Reservations Module (HIGH)
+10. Phase 9: Payments Module (HIGH)
+11. Phase 10: Dashboard Module (MEDIUM)
+12. Phase 11: Notifications Module (MEDIUM)
+13. Phase 12: PDF Service Module (MEDIUM)
+14. Phase 14: Testing & Validation (HIGH)
+15. Phase 15: Deployment Preparation (MEDIUM)
+16. Phase 16: Documentation (LOW)
+17. Phase 17: Additional Features (LOW)
+
+### Dependencies:
+- Authentication must be completed before Users, Reservations, Payments
+- Database setup must be completed before all modules
+- Airlines and Airports must be completed before Flights
+- Flights must be completed before Reservations
+- Reservations must be completed before Payments
+
+---
+
+## 🎯 Quick Start Checklist
+
+- [ ] Run: `npm i -g @nestjs/cli`
+- [ ] Run: `nest new flight-reservation-backend`
+- [ ] Install all dependencies from Phase 1
+- [ ] Create `.env` file
+- [ ] Configure `main.ts` and `app.module.ts`
+- [ ] Set up database connection
+- [ ] Create common enums and utilities
+- [ ] Implement authentication module
+- [ ] Implement core business modules
+
+---
+
+**Last Updated:** $(date)
+**Project:** AtlasAir - Flight Reservation Backend
+**Framework:** NestJS
+**Database:** Oracle Database
+
