@@ -16,5 +16,22 @@ export class CreatePaymentDto {
   @IsString()
   @IsNotEmpty()
   paymentMethod: string;
+
+  // Card details for validation
+  @IsString()
+  @IsNotEmpty()
+  cardNumber: string;
+
+  @IsString()
+  @IsNotEmpty()
+  cardHolder: string;
+
+  @IsString()
+  @IsNotEmpty()
+  expiryDate: string; // MM/YY format
+
+  @IsString()
+  @IsNotEmpty()
+  cvv: string;
 }
 

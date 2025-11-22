@@ -1,9 +1,14 @@
-import { Module, Optional } from '@nestjs/common';
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { MailerService } from '@nestjs-modules/mailer';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { NotificationsService } from './notifications.service';
+import { NotificationsController } from './notifications.controller';
+import { Notification } from './entities/notification.entity';
+import { Reservation } from '../reservations/entities/reservation.entity';
+import { User } from '../users/entities/user.entity';
 import * as path from 'path';
 
 const getMailerConfig = (configService: ConfigService) => {
@@ -56,37 +61,12 @@ function getMailerModuleImports() {
 @Module({
   imports: [
     ConfigModule,
+    TypeOrmModule.forFeature([Notification, Reservation, User]),
     ...getMailerModuleImports(),
   ],
+  controllers: [NotificationsController],
   providers: [
-    {
-      provide: NotificationsService,
-      useFactory: (mailerService: MailerService | null, configService: ConfigService) => {
-        const mailUser = configService.get('MAIL_USER');
-        const mailPassword = configService.get('MAIL_PASSWORD');
-        const mailEnabled = configService.get('MAIL_ENABLED', 'true') === 'true';
-
-        if (!mailEnabled || !mailUser || !mailPassword || !mailerService) {
-          // Return a mock service that just logs
-          return {
-            sendBookingConfirmation: async () => {
-              console.log('📧 Email service disabled - booking confirmation email would be sent here');
-            },
-            sendPaymentConfirmation: async () => {
-              console.log('📧 Email service disabled - payment confirmation email would be sent here');
-            },
-            sendFlightReminder: async () => {
-              console.log('📧 Email service disabled - flight reminder email would be sent here');
-            },
-            sendCancellationNotification: async () => {
-              console.log('📧 Email service disabled - cancellation email would be sent here');
-            },
-          };
-        }
-        return new NotificationsService(mailerService, configService);
-      },
-      inject: [{ token: MailerService, optional: true }, ConfigService],
-    },
+    NotificationsService,
   ],
   exports: [NotificationsService],
 })

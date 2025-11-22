@@ -2,6 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateCol
 import { Exclude } from 'class-transformer';
 import { UserRole } from '../../common/enums/user-role.enum';
 import { Reservation } from '../../reservations/entities/reservation.entity';
+import { PassengerProfile } from '../../passenger-profiles/entities/passenger-profile.entity';
 
 @Entity('users')
 export class User {
@@ -42,5 +43,8 @@ export class User {
 
   @OneToMany(() => Reservation, (reservation) => reservation.user)
   reservations: Reservation[];
+
+  @OneToMany(() => PassengerProfile, (profile) => profile.user)
+  passengerProfiles: PassengerProfile[];
 }
 

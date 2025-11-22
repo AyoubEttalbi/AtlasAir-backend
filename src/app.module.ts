@@ -11,9 +11,11 @@ import { AirportsModule } from './airports/airports.module';
 import { ReservationsModule } from './reservations/reservations.module';
 import { PaymentsModule } from './payments/payments.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { PassengerProfilesModule } from './passenger-profiles/passenger-profiles.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { PdfModule } from './pdf/pdf.module';
 import { HealthModule } from './health/health.module';
+import { TicketsModule } from './tickets/tickets.module';
 import { getDatabaseConfig } from './config/database.config';
 
 @Module({
@@ -52,8 +54,10 @@ import { getDatabaseConfig } from './config/database.config';
     ReservationsModule,
     PaymentsModule,
     DashboardModule,
+    PassengerProfilesModule,
     NotificationsModule,
     PdfModule,
+    TicketsModule,
     HealthModule,
   ],
 })

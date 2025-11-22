@@ -4,6 +4,7 @@ import { FlightClass } from '../../common/enums/flight-class.enum';
 import { User } from '../../users/entities/user.entity';
 import { Flight } from '../../flights/entities/flight.entity';
 import { Payment } from '../../payments/entities/payment.entity';
+import { Ticket } from '../../tickets/entities/ticket.entity';
 
 @Entity('reservations')
 export class Reservation {
@@ -60,5 +61,8 @@ export class Reservation {
 
   @OneToOne(() => Payment, (payment) => payment.reservation)
   payment: Payment;
+
+  @OneToOne(() => Ticket, (ticket) => ticket.reservation)
+  ticket: Ticket;
 }
 

@@ -1,0 +1,65 @@
+services:
+  # Oracle Database
+  oracle-db:
+    image: gvenzl/oracle-xe:21-slim
+    container_name: atlasair-oracle-db
+    environment:
+      - ORACLE_PASSWORD=${DB_PASSWORD:-ChangeThisPassword123}
+      - APP_USER=${DB_USERNAME:-appuser}
+      - APP_USER_PASSWORD=${DB_PASSWORD:-ChangeThisPassword123}
+    ports:
+      - "1521:1521"
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+    healthcheck:
+      test: [ "CMD", "healthcheck.sh" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    networks:
+      - atlasair-network
+
+  # Backend API
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: atlasair-backend
+    env_file:
+      - .env.docker
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=oracle-db
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./uploads:/app/uploads
+    depends_on:
+      oracle-db:
+        condition: service_healthy
+    networks:
+      - atlasair-network
+    restart: unless-stopped
+
+  # Frontend
+  frontend:
+    build:
+      context: d:/work2/Flight Booking/Trimpa2
+      dockerfile: Dockerfile
+    container_name: atlasair-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    networks:
+      - atlasair-network
+    restart: unless-stopped
+
+networks:
+  atlasair-network:
+    driver: bridge
+
+volumes:
+  oracle-data:
+    driver: local

@@ -83,6 +83,15 @@ export class FlightsService {
     const nextDay = new Date(departureDate);
     nextDay.setDate(nextDay.getDate() + 1);
 
+    console.log('Search parameters:', {
+      departureAirportId: searchFlightDto.departureAirportId,
+      arrivalAirportId: searchFlightDto.arrivalAirportId,
+      departureDate: departureDate.toISOString(),
+      nextDay: nextDay.toISOString(),
+      passengers: searchFlightDto.passengers,
+      flightClass: searchFlightDto.flightClass,
+    });
+
     const flights = await this.flightsRepository.find({
       where: {
         departureAirport: { id: searchFlightDto.departureAirportId },
@@ -93,13 +102,19 @@ export class FlightsService {
       relations: ['airline', 'departureAirport', 'arrivalAirport'],
     });
 
-    return flights.filter((flight) => {
+    console.log(`Found ${flights.length} flights matching search criteria`);
+
+    const filteredFlights = flights.filter((flight) => {
       if (searchFlightDto.flightClass) {
         const availableSeats = this.getAvailableSeats(flight, searchFlightDto.flightClass);
         return availableSeats >= (searchFlightDto.passengers || 1);
       }
       return true;
     });
+
+    console.log(`Returning ${filteredFlights.length} flights after filtering by class/passengers`);
+
+    return filteredFlights;
   }
 
   private getAvailableSeats(flight: Flight, flightClass: string): number {
