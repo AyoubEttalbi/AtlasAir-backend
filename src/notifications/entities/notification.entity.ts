@@ -13,7 +13,7 @@ export class Notification {
   id: string;
 
   @Column({
-    type: 'varchar2',
+    type: 'varchar',
     length: 20,
   })
   type: NotificationType;
@@ -21,7 +21,7 @@ export class Notification {
   @Column({ type: 'timestamp' })
   dateEnvoi: Date;
 
-  @Column({ type: 'clob', nullable: true })
+  @Column({ type: 'text', nullable: true })
   message: string;
 
   @ManyToOne(() => Reservation, { nullable: true })
@@ -32,7 +32,7 @@ export class Notification {
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @Column({ type: 'varchar2', length: 20, default: 'sent' })
+  @Column({ type: 'varchar', length: 20, default: 'sent' })
   status: string; // 'sent', 'failed', 'pending'
 
   @CreateDateColumn()

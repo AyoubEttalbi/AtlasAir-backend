@@ -30,37 +30,37 @@ export class Flight {
   @Column({ type: 'timestamp' })
   arrivalTime: Date;
 
-  @Column({ type: 'number' })
+  @Column({ type: 'int' })
   durationMinutes: number;
 
-  @Column({ type: 'number', default: 0 })
+  @Column({ type: 'int', default: 0 })
   stops: number;
 
-  @Column({ type: 'number', precision: 10, scale: 2 })
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
   economyPrice: number;
 
-  @Column({ type: 'number', precision: 10, scale: 2 })
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
   businessPrice: number;
 
-  @Column({ type: 'number', precision: 10, scale: 2 })
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
   firstClassPrice: number;
 
-  @Column({ type: 'number', default: 180 })
+  @Column({ type: 'int', default: 180 })
   economySeats: number;
 
-  @Column({ type: 'number', default: 50 })
+  @Column({ type: 'int', default: 50 })
   businessSeats: number;
 
-  @Column({ type: 'number', default: 20 })
+  @Column({ type: 'int', default: 20 })
   firstClassSeats: number;
 
-  @Column({ type: 'number', default: 180 })
+  @Column({ type: 'int', default: 180 })
   availableEconomySeats: number;
 
-  @Column({ type: 'number', default: 50 })
+  @Column({ type: 'int', default: 50 })
   availableBusinessSeats: number;
 
-  @Column({ type: 'number', default: 20 })
+  @Column({ type: 'int', default: 20 })
   availableFirstClassSeats: number;
 
   @Column({ default: true })

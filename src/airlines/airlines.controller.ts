@@ -8,12 +8,11 @@ import { Roles } from '../auth/decorators/roles.decorator';
 import { UserRole } from '../common/enums/user-role.enum';
 
 @Controller('airlines')
-@UseGuards(JwtAuthGuard)
 export class AirlinesController {
-  constructor(private readonly airlinesService: AirlinesService) {}
+  constructor(private readonly airlinesService: AirlinesService) { }
 
   @Post()
-  @UseGuards(RolesGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   create(@Body() createAirlineDto: CreateAirlineDto) {
     return this.airlinesService.create(createAirlineDto);
@@ -30,14 +29,14 @@ export class AirlinesController {
   }
 
   @Patch(':id')
-  @UseGuards(RolesGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   update(@Param('id') id: string, @Body() updateAirlineDto: UpdateAirlineDto) {
     return this.airlinesService.update(id, updateAirlineDto);
   }
 
   @Delete(':id')
-  @UseGuards(RolesGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.ADMIN)
   remove(@Param('id') id: string) {
     return this.airlinesService.remove(id);

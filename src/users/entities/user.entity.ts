@@ -26,7 +26,7 @@ export class User {
   password: string;
 
   @Column({
-    type: 'varchar2',
+    type: 'varchar',
     length: 20,
     default: UserRole.CLIENT,
   })

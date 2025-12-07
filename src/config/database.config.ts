@@ -16,12 +16,12 @@ export const getDatabaseConfig = (
   }
 
   return {
-    type: 'oracle',
+    type: 'mysql',
     host: configService.get('DB_HOST', 'localhost'),
-    port: parseInt(configService.get('DB_PORT', '1521'), 10),
+    port: parseInt(configService.get('DB_PORT', '3306'), 10),
     username: dbUsername,
     password: dbPassword,
-    serviceName: configService.get('DB_SERVICE_NAME'),
+    database: configService.get('DB_NAME', 'atlasair'),
     entities: [__dirname + '/../**/*.entity{.ts,.js}'],
     synchronize: configService.get('DB_SYNCHRONIZE') === 'true',
     logging: isDevelopment,
@@ -29,9 +29,9 @@ export const getDatabaseConfig = (
     retryAttempts: isDevelopment ? 1 : 3,
     retryDelay: 2000,
     autoLoadEntities: true,
-    // Oracle-specific connection options
+    // MySQL connection options
     extra: {
-      connectTimeout: 10000, // 10 seconds timeout for Oracle driver
+      connectionLimit: 10,
     },
   };
 };

@@ -6,6 +6,9 @@ import { Airport } from '../airports/entities/airport.entity';
 import { Flight } from '../flights/entities/flight.entity';
 import { Reservation } from '../reservations/entities/reservation.entity';
 import { Payment } from '../payments/entities/payment.entity';
+import { Ticket } from '../tickets/entities/ticket.entity';
+import { Notification } from '../notifications/entities/notification.entity';
+import { PassengerProfile } from '../passenger-profiles/entities/passenger-profile.entity';
 import { UserRole } from '../common/enums/user-role.enum';
 import { getDatabaseConfig } from '../config/database.config';
 import { ConfigService } from '@nestjs/config';
@@ -28,7 +31,7 @@ async function seed() {
   // Create data source - include all entities for proper relationship resolution
   const dataSource = new DataSource({
     ...dbConfig,
-    entities: [User, Airline, Airport, Flight, Reservation, Payment],
+    entities: [User, Airline, Airport, Flight, Reservation, Payment, Ticket, Notification, PassengerProfile],
   } as any);
 
   try {

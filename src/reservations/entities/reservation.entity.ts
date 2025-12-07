@@ -35,16 +35,16 @@ export class Reservation {
   passengerDateOfBirth: Date;
 
   @Column({
-    type: 'varchar2',
+    type: 'varchar',
     length: 20,
   })
   flightClass: FlightClass;
 
-  @Column({ type: 'number', precision: 10, scale: 2 })
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
   totalPrice: number;
 
   @Column({
-    type: 'varchar2',
+    type: 'varchar',
     length: 20,
     default: ReservationStatus.PENDING,
   })

@@ -11,7 +11,7 @@ export class Payment {
   @JoinColumn({ name: 'reservation_id' })
   reservation: Reservation;
 
-  @Column({ type: 'number', precision: 10, scale: 2 })
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
   amount: number;
 
   @Column({ length: 10, default: 'MAD' })
@@ -21,7 +21,7 @@ export class Payment {
   paymentMethod: string;
 
   @Column({
-    type: 'varchar2',
+    type: 'varchar',
     length: 20,
     default: PaymentStatus.PENDING,
   })
