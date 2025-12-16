@@ -20,7 +20,7 @@ export class DashboardService {
     private usersRepository: Repository<User>,
     @InjectRepository(Flight)
     private flightsRepository: Repository<Flight>,
-  ) {}
+  ) { }
 
   async getStatistics(): Promise<StatisticsDto> {
     const [
@@ -79,7 +79,8 @@ export class DashboardService {
 
     payments.forEach((payment) => {
       const month = new Date(payment.createdAt).toLocaleString('en-US', { month: 'short', year: 'numeric' });
-      monthlyData.set(month, (monthlyData.get(month) || 0) + payment.amount);
+      const amount = parseFloat(String(payment.amount)) || 0;
+      monthlyData.set(month, (monthlyData.get(month) || 0) + amount);
     });
 
     return Array.from(monthlyData.entries()).map(([month, revenue]) => ({

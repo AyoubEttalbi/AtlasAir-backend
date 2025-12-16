@@ -64,16 +64,18 @@ async function seed() {
       console.log('ℹ️  Admin user already exists');
     }
 
-    // Seed Airlines
+    // Seed Airlines (matching logos in frontend public/airlines folder)
     const airlines = [
-      { name: 'Royal Air Maroc', code: 'AT', country: 'Morocco' },
+      { name: 'Air China', code: 'CA', country: 'China' },
       { name: 'Air France', code: 'AF', country: 'France' },
+      { name: 'Delta Airlines', code: 'DL', country: 'USA' },
+      { name: 'EVA Air', code: 'BR', country: 'Taiwan' },
       { name: 'Emirates', code: 'EK', country: 'UAE' },
-      { name: 'Lufthansa', code: 'LH', country: 'Germany' },
-      { name: 'British Airways', code: 'BA', country: 'United Kingdom' },
-      { name: 'Qatar Airways', code: 'QR', country: 'Qatar' },
-      { name: 'Turkish Airlines', code: 'TK', country: 'Turkey' },
-      { name: 'Air Arabia', code: 'G9', country: 'UAE' },
+      { name: 'Hawaiian Airlines', code: 'HA', country: 'USA' },
+      { name: 'Japan Airlines', code: 'JL', country: 'Japan' },
+      { name: 'Korean Air', code: 'KE', country: 'South Korea' },
+      { name: 'Qantas Airlines', code: 'QF', country: 'Australia' },
+      { name: 'United Airlines', code: 'UA', country: 'USA' },
     ];
 
     for (const airlineData of airlines) {
@@ -115,7 +117,7 @@ async function seed() {
     console.log('\n🎉 Database seeding completed successfully!');
     console.log('\n📝 Summary:');
     console.log('   - Admin user: admin@atlasair.com / admin123');
-    console.log('   - Airlines: 8 airlines created');
+    console.log('   - Airlines: 10 airlines created');
     console.log('   - Airports: 10 airports created');
     console.log('\n💡 You can now:');
     console.log('   1. Login with admin credentials to access admin features');
