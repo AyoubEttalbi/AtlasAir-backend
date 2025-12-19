@@ -10,7 +10,7 @@ export const getDatabaseConfig = (
   const dbPassword = configService.get('DB_PASSWORD');
 
   // If DB is disabled or credentials are missing, return null to prevent connection
-  if (!dbEnabled || !dbUsername || !dbPassword) {
+  if (!dbEnabled || !dbUsername ) {
     console.warn('⚠️  Database connection disabled. Set DB_ENABLED=true and provide credentials to enable.');
     return null;
   }
